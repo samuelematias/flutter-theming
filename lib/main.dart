@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theming/app_theme.dart';
 import 'package:theming/task_page.dart';
 
 void main() {
@@ -11,8 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Theming',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       home: TaskPage(),
     );
   }

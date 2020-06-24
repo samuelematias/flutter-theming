@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:theming/app_state.dart';
 
 class TaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _appstate = Provider.of<AppState>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -56,6 +59,15 @@ class TaskPage extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Spacer(),
+          SwitchListTile(
+            title: Text(
+              'Dark mode',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            value: _appstate.isDarkModeOn,
+            onChanged: (booleanValue) => _appstate.updateTheme(booleanValue),
           ),
         ],
       ),

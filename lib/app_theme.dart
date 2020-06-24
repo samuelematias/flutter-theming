@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static final Color _iconColor = Colors.redAccent.shade200;
+  static final Color _iconColor = Colors.blueAccent.shade200;
 
   static const Color _lightPrimaryColor = Colors.white;
   static const Color _lightPrimaryVariantColor = Color(0xFFE1E1E1);
   static const Color _lightSecondaryColor = Colors.green;
   static const Color _lightOnPrimaryColor = Colors.black;
+
+  static const Color _darkPrimaryColor = Colors.white24;
+  static const Color _darkPrimaryVariantColor = Colors.black;
+  static const Color _darkSecondaryColor = Colors.white;
+  static const Color _darkOnPrimaryColor = Colors.white;
 
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: _lightPrimaryVariantColor,
@@ -28,16 +33,47 @@ class AppTheme {
     textTheme: _lightTextTheme,
   );
 
-  static final TextTheme _lightTextTheme = TextTheme(
-    headline1: _lightScreenHeadingStyle,
-    bodyText1: _lightScreenTaskNameStyle,
-    bodyText2: _lightScreenTaskDurationStyle,
+  static final ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: _darkPrimaryVariantColor,
+    appBarTheme: AppBarTheme(
+      color: _darkPrimaryVariantColor,
+      iconTheme: IconThemeData(color: _darkOnPrimaryColor),
+    ),
+    colorScheme: ColorScheme.light(
+      primary: _darkPrimaryColor,
+      primaryVariant: _darkPrimaryVariantColor,
+      secondary: _darkSecondaryColor,
+      onPrimary: _darkOnPrimaryColor,
+    ),
+    iconTheme: IconThemeData(
+      color: _iconColor,
+    ),
+    textTheme: _darkTextTheme,
   );
 
-  static final TextStyle _lightScreenHeadingStyle = TextStyle(
-      fontSize: 48.0, letterSpacing: 1.2, color: _lightOnPrimaryColor);
-  static final TextStyle _lightScreenTaskNameStyle =
+  static final TextTheme _lightTextTheme = TextTheme(
+    headline2: _lightScreenHeadingTextStyle,
+    bodyText1: _lightScreenTaskNameTextStyle,
+    bodyText2: _lightScreenTaskDurationTextStyle,
+  );
+
+  static final TextTheme _darkTextTheme = TextTheme(
+    headline2: _darkScreenHeadingTextStyle,
+    bodyText1: _darkScreenTaskNameTextStyle,
+    bodyText2: _darkScreenTaskDurationTextStyle,
+  );
+
+  static final TextStyle _lightScreenHeadingTextStyle =
+      TextStyle(fontSize: 48.0, color: _lightOnPrimaryColor);
+  static final TextStyle _lightScreenTaskNameTextStyle =
       TextStyle(fontSize: 20.0, color: _lightOnPrimaryColor);
-  static final TextStyle _lightScreenTaskDurationStyle =
+  static final TextStyle _lightScreenTaskDurationTextStyle =
       TextStyle(fontSize: 16.0, color: Colors.grey);
+
+  static final TextStyle _darkScreenHeadingTextStyle =
+      _lightScreenHeadingTextStyle.copyWith(color: _darkOnPrimaryColor);
+  static final TextStyle _darkScreenTaskNameTextStyle =
+      _lightScreenTaskNameTextStyle.copyWith(color: _darkOnPrimaryColor);
+  static final TextStyle _darkScreenTaskDurationTextStyle =
+      _lightScreenTaskDurationTextStyle;
 }
